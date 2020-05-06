@@ -70,13 +70,15 @@ public class Application {
 
 
     public void fillApplication(String applicantName, String applicantEmail, String qualifications, String applicantbrief, int userid) {
-        D.InsertApplication(applicantName, applicantEmail, qualifications, applicantbrief, userid);
+       D.InsertApplication(applicantName, applicantEmail, qualifications, applicantbrief, userid);
     }
 
     public void searchApplicants() {
-        ArrayList<Application> applist= new ArrayList<>();
-        applist=D.getApplications();
-    }
+        ArrayList<Application> Applications = D.getApplications();
+        System.out.println("Found " + Applications.size() + " Applicants!");
+        for (int i = 0; i < Applications.size(); i++) {
+            System.out.println("Name: " + Applications.get(i).getApplicantName() + "\nEmail: " + Applications.get(i).getApplicantEmail());
+        }    }
 
     public boolean approve() {
         boolean Astatus = false;

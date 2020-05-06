@@ -5,10 +5,14 @@
  */
 package recruitement;
 
+import java.util.Date;
+
 /**
  *
  * @author mazen174825
  */
 public class Employer extends User {
-    
+    public Employer(String name, Date DOB, String phone, String address, String gender) {
+        super(name, DOB, phone, address, gender);
+    }
 }

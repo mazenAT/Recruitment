@@ -38,6 +38,20 @@ public class DBConnection {
        }
        return result;
    }
+    public ArrayList<User> getAllUsers() {
+        ArrayList<User> result = new ArrayList();
+        try {
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("select * from user");
+            while (rs.next()) {
+                result.add(new User(rs.getString("u_name"), rs.getDate("u_DOB"), rs.getString("u_phone"), rs.getString("u_address"), rs.getString("u_gender")));
+            }
+        } catch (Exception e) {
+            System.err.println("DATABASE QUERY ERROR: " + e.toString());
+        }
+        return result;
+    }
+
    }
     
 

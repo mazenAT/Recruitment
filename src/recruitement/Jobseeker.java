@@ -9,6 +9,6 @@ package recruitement;
  *
  * @author mazen174825
  */
-public class jobseeker extends User {
+public class Jobseeker extends User {
     
 }

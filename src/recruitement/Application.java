@@ -20,6 +20,12 @@ public class Application {
     private String applicantbrief;
     private boolean Appstatus;
     DBConnection D = new DBConnection();
+    private JPanel panel1;
+    private JButton submit;
+    private JTextField ApplicantName;
+    private JTextField ApplicantEmail;
+    private JTextField ApplicantQ;
+    private JTextField ApplicantB;
 
 
     public Application(String applicantName, String applicantEmail, String qualifications, String applicantbrief) {

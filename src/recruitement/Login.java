@@ -34,7 +34,7 @@ public class Login extends javax.swing.JFrame {
                 User.setType(type);
                 int tempID1 = 1;
 
-                ArrayList<User> Users = DB.getAllUsers();
+                ArrayList<User> Users = (ArrayList<User>) DB.getAllUsers();
                 for (int i = 0; i < Users.size(); i++)
                 {
                     if(User.getEmail().equals(Users.get(i).getEmail()) && User.getPassword().equals(Users.get(i).getPassword()) && User.getType().equals(Users.get(i).getType()))

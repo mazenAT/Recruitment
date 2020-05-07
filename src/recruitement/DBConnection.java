@@ -17,6 +17,7 @@ public class DBConnection {
             System.out.println("error: "+ex);
         }
     }
+
    public void InsertApplication(String applicantName,String applicantEmail,String qualifications,String applicantbrief,int UserId){
     try {
         String sql=("INSERT INTO application (app_id, app_name, app_email, app_qualification, app_brief, app_js_id) VALUES (NULL, '"+applicantName+"', '"+applicantEmail+"', '"+qualifications+"', '"+applicantbrief+"', '"+UserId+"')");
@@ -44,7 +45,7 @@ public class DBConnection {
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("select * from user");
             while (rs.next()) {
-                result.add(new User(rs.getString("u_name"), rs.getDate("u_DOB"), rs.getString("u_phone"), rs.getString("u_address"), rs.getString("u_gender")));
+                result.add(new User(rs.getInt("u_id"), rs.getString("u_name"), rs.getInt("u_age"), rs.getString("u_phone"), rs.getString("u_address"), rs.getString("u_gender"), rs.getString("u_email"), rs.getString("u_password"), rs.getString("u_type")));
             }
         } catch (Exception e) {
             System.err.println("DATABASE QUERY ERROR: " + e.toString());

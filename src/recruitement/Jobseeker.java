@@ -12,7 +12,7 @@ import java.util.Date;
  * @author mazen174825
  */
 public class Jobseeker extends User {
-    public Jobseeker(String name, Date DOB, String phone, String address, String gender) {
-        super(name, DOB, phone, address, gender);
+    public Jobseeker(int id, String name, int age, String phone, String address, String gender, String email, String password, String type) {
+        super(id, name, age, phone, address, gender, email, password, type);
     }
 }

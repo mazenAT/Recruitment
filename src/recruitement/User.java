@@ -12,18 +12,35 @@ import java.util.Date;
  * @author mazen174825
  */
 public class User {
+
+    int id;
     String name;
-    Date DOB;
+    int age;
     String phone;
     String address;
     String gender;
+    String email;
+    String password;
+    String type;
 
-    public User(String name, Date DOB, String phone, String address, String gender) {
+    public User(int id, String name, int age, String phone, String address, String gender, String email, String password, String type) {
+        this.id = id;
         this.name = name;
-        this.DOB = DOB;
+        this.age = age;
         this.phone = phone;
         this.address = address;
         this.gender = gender;
+        this.email = email;
+        this.password = password;
+        this.type = type;
+    }
+
+    public int getID() {
+        return id;
+    }
+
+    public void setID(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -34,12 +51,12 @@ public class User {
         this.name = name;
     }
 
-    public Date getDOB() {
-        return DOB;
+    public int getAge() {
+        return age;
     }
 
-    public void setDOB(Date DOB) {
-        this.DOB = DOB;
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public String getPhone() {
@@ -66,5 +83,33 @@ public class User {
         this.gender = gender;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void InsertUserAsjobseeker(int id, String name, int age, String phone, String address, String gender, String email, String password, String type){
+
+
+    }
 
 }

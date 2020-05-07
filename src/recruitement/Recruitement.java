@@ -2,6 +2,7 @@
 package recruitement;
 
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class Recruitement {
@@ -11,13 +12,9 @@ public class Recruitement {
 
         DBConnection DB = new DBConnection();
 
+        Login l = new Login();
+        l.setVisible(true);
 
-
-        ArrayList<User> Users = DB.getAllUsers();
-        System.out.println("Found " + Users.size() + " Users!");
-        for (int i = 0; i < Users.size(); i++) {
-            System.out.println("Name: " + Users.get(i).getName() + "\nEmail: " + Users.get(i).getAddress()+"\nGender: " + Users.get(i).getGender());
-        }
 
     }
 }

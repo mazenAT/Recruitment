@@ -1,4 +1,4 @@
 package recruitement;
 
-public class Login {
+public class JsignUp {
 }

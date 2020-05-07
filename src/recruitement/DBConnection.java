@@ -71,7 +71,7 @@ public class DBConnection {
     public int RetrieveVacancyID(String title) {
         int id = 0;
         try {
-            String sql = ("SELECT v_id FROM `vacancy` WHERE v_title = title");
+            String sql = ("SELECT v_id FROM `vacancy` WHERE v_title = title");//-----------------------------
             rs = st.executeQuery(sql);
             id = rs.getInt("v_id");
 
@@ -105,6 +105,62 @@ public class DBConnection {
         }
         return rs;
     }
+
+    public ArrayList<User> checkUsers(){
+        ArrayList<User> result = new ArrayList();
+        try {
+            rs = st.executeQuery("select * from user");
+            while (rs.next()) {
+                result.add(new User( rs.getString("u_name"), rs.getInt("u_age"), rs.getString("u_phone"), rs.getString("u_address"), rs.getString("u_gender"), rs.getString("u_email"), rs.getString("u_password"), rs.getString("u_type")));
+            }
+        } catch (Exception e) {
+            System.err.println("DATABASE QUERY ERROR: " + e.toString());
+        }
+        return result;
+    }
+
+    public void insertJobseeker(Jobseeker js){
+        try {
+            String sql = "INSERT INTO `user` (`u_id`, `u_name`, `u_age`, `u_phone`, `u_address`, `u_gender`, `u_email`, `u_password`, `u_type`) " + "VALUES (NULL, '"+js.getName()+"', '"+js.getAge()+"', '"+js.getPhone()+"', '"+js.getAddress()+"', '"+js.getGender()+"', '"+js.getEmail()+"', '"+js.getPassword()+"', '"+js.getType()+"')";
+
+            st.executeUpdate(sql);
+            int id = 0;
+            String sql2 = "SELECT u_id FROM `user` WHERE u_email = '" + js.getEmail() + "' ";
+            rs = st.executeQuery(sql2);
+            if (rs.first()) {
+                id = rs.getInt("u_id");
+            }
+
+            String sql3 = "INSERT INTO `jobseeker` (`js_id`, `js_degree`, `js_careerLvl`) " + "VALUES ('"+id+"', '"+js.getDegree()+"', '"+js.getCareerlvl()+"')";
+            st.executeUpdate(sql3);
+
+        } catch (Exception e) {
+            System.err.println("DATABASE QUERY ERROR: " + e.toString());
+        }
+    }
+
+    public void insertEmployer(Employer emp){
+        try {
+            String sql = "INSERT INTO `user` (`u_id`, `u_name`, `u_age`, `u_phone`, `u_address`, `u_gender`, `u_email`, `u_password`, `u_type`) " +
+                    "VALUES (NULL, '"+emp.getName()+"', '"+emp.getAge()+"', '"+emp.getPhone()+"', '"+emp.getAddress()+"', '"+emp.getGender()+"', '"+emp.getEmail()+"', '"+emp.getPassword()+"', '"+emp.getType()+"')";
+
+            st.executeUpdate(sql);
+            int id = 0;
+            String sql2 = "SELECT u_id FROM `user` WHERE u_email = '" + emp.getEmail() + "' ";
+            rs = st.executeQuery(sql2);
+            if (rs.first()) {
+                id = rs.getInt("u_id");
+            }
+
+            String sql3 = "INSERT INTO `employer` (`emp_id`, `emp_jobRole`, `emp_company_name`, `emp_company_phone`, `emp_company_industry`, `emp_bussiness_mail`, `emp_company_website`, `emp_company_address`) " +
+                    "VALUES ('"+id+"', '"+emp.getJobRole()+"', '"+emp.getCompanyName()+"', '"+emp.getPhone()+"', '"+emp.getComapnyIndustry()+"', '"+emp.getBussinessMail()+"', '"+emp.getCompanyWebsite()+"', '"+emp.getCompanyAddress()+"')";
+            st.executeUpdate(sql3);
+
+        } catch (Exception e) {
+            System.err.println("DATABASE QUERY ERROR: " + e.toString());
+        }
+    }
+
 
 
 }

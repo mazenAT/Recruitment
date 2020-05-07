@@ -19,7 +19,7 @@ public class    Application {
     private String qualifications;
     private String applicantbrief;
     private boolean Appstatus;
-    DBConnection D = new DBConnection();
+    private DBConnection D ;
     private int vacancy_id;
     private JPanel panel1;
     private JButton submit;
@@ -34,6 +34,7 @@ public class    Application {
         this.applicantEmail = applicantEmail;
         this.qualifications = qualifications;
         this.applicantbrief = applicantbrief;
+        this.D = new DBConnection();
 
 
     }

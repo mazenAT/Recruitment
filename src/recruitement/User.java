@@ -5,7 +5,6 @@
  */
 package recruitement;
 
-import java.util.Date;
 
 /**
  *
@@ -22,9 +21,11 @@ public class User {
     String email;
     String password;
     String type;
+    DBConnection D ;
 
-    public User(int id, String name, int age, String phone, String address, String gender, String email, String password, String type) {
-        this.id = id;
+
+
+    public User( String name, int age, String phone, String address, String gender, String email, String password, String type) {
         this.name = name;
         this.age = age;
         this.phone = phone;
@@ -33,6 +34,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.type = type;
+        this.D = new DBConnection();
     }
 
     public int getID() {
@@ -107,9 +109,6 @@ public class User {
         this.type = type;
     }
 
-    public void InsertUserAsjobseeker(int id, String name, int age, String phone, String address, String gender, String email, String password, String type){
 
-
-    }
 
 }

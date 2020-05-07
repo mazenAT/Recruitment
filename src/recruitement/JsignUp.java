@@ -21,14 +21,14 @@ public class JsignUp extends javax.swing.JFrame {
     private JSpinner spinner1;
     private JComboBox comboBox1;
     private String type = "jobseeker";
+    private DBConnection D;
 
     public JsignUp() {
-
-        DBConnection DB = new DBConnection();
         add (jsu);
         setTitle("Job Seeker SignUp");
         setSize(250,600);
         setLocationRelativeTo(null);
+        D = new DBConnection();
 
 
 
@@ -44,6 +44,10 @@ public class JsignUp extends javax.swing.JFrame {
                 String email = textField8.getText();
                 String password = textField9.getText();
                 String gender = comboBox1.getSelectedItem().toString();
+                Jobseeker js = new Jobseeker(name, age, phone, address, gender, email, password, type, degree, careerlvl);
+                D.insertJobseeker(js);
+
+
 
 
             }

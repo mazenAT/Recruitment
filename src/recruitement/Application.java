@@ -13,13 +13,14 @@ import java.util.ArrayList;
  *
  * @author mazen174825
  */
-public class Application {
+public class    Application {
     private String applicantName;
     private String applicantEmail;
     private String qualifications;
     private String applicantbrief;
     private boolean Appstatus;
     DBConnection D = new DBConnection();
+    private int vacancy_id;
     private JPanel panel1;
     private JButton submit;
     private JTextField ApplicantName;
@@ -34,6 +35,15 @@ public class Application {
         this.qualifications = qualifications;
         this.applicantbrief = applicantbrief;
 
+
+    }
+
+    public int getVacancy_id() {
+        return vacancy_id;
+    }
+
+    public void setVacancy_id(int vacancy_id) {
+        this.vacancy_id = vacancy_id;
     }
 
     public String getApplicantName() {
@@ -69,16 +79,14 @@ public class Application {
     }
 
 
-    public void fillApplication(String applicantName, String applicantEmail, String qualifications, String applicantbrief, int userid) {
-       D.InsertApplication(applicantName, applicantEmail, qualifications, applicantbrief, userid);
+    public void fillApplication(String applicantName, String applicantEmail, String qualifications, String applicantbrief, int userid, int vacancy_id ) {
+        D.InsertApplication(applicantName, applicantEmail, qualifications, applicantbrief, userid, vacancy_id);
     }
 
     public void searchApplicants() {
-        ArrayList<Application> Applications = D.getApplications();
-        System.out.println("Found " + Applications.size() + " Applicants!");
-        for (int i = 0; i < Applications.size(); i++) {
-            System.out.println("Name: " + Applications.get(i).getApplicantName() + "\nEmail: " + Applications.get(i).getApplicantEmail());
-        }    }
+        ArrayList<Application> applist= new ArrayList<>();
+        applist= (ArrayList<Application>) D.getApplications(this.vacancy_id);
+    }
 
     public boolean approve() {
         boolean Astatus = false;
@@ -122,5 +130,6 @@ public class Application {
         return false;
     }
 }
+
 
 

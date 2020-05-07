@@ -12,7 +12,28 @@ import java.util.Date;
  * @author mazen174825
  */
 public class Jobseeker extends User {
-    public Jobseeker(int id, String name, int age, String phone, String address, String gender, String email, String password, String type) {
-        super(id, name, age, phone, address, gender, email, password, type);
+
+    private String degree;
+    private String careerlvl;
+    public Jobseeker( String name, int age, String phone, String address, String gender, String email, String password, String type, String degree, String careerlvl) {
+        super( name, age, phone, address, gender, email, password, type);
+        this.degree = degree;
+        this.careerlvl = careerlvl;
+    }
+
+    public String getDegree() {
+        return degree;
+    }
+
+    public void setDegree(String degree) {
+        this.degree = degree;
+    }
+
+    public String getCareerlvl() {
+        return careerlvl;
+    }
+
+    public void setCareerlvl(String careerlvl) {
+        this.careerlvl = careerlvl;
     }
 }

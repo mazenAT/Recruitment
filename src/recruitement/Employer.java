@@ -12,23 +12,28 @@ import java.util.Date;
  * @author mazen174825
  */
 public class Employer extends User {
-    String jobRole;
-    String CompanyName;
-    String CompanyPhone;
-    String ComapnyIndustry;
-    String BussinessMail;
-    String CompanyWebsite;
-    String CompanyAddress;
+    private String jobRole;
+    private String CompanyName;
+    private String CompanyPhone;
+    private String ComapnyIndustry;
+    private String BussinessMail;
+    private String CompanyWebsite;
+    private String CompanyAddress;
 
-    public Employer(int id, String name, int age, String phone, String address, String gender, String email, String password, String type, String jobRole, String companyName, String companyPhone, String comapnyIndustry, String bussinessMail, String companyWebsite, String companyAddress) {
-        super(id, name, age, phone, address, gender, email, password, type);
+
+    public Employer( String name, int age, String phone, String address,
+                     String gender, String email, String password, String type,
+                     String jobRole, String companyName, String companyPhone, String comapnyIndustry,
+                     String bussinessMail, String companyWebsite, String companyAddress) {
+
+        super( name, age, phone, address, gender, email, password, type);
         this.jobRole = jobRole;
-        CompanyName = companyName;
-        CompanyPhone = companyPhone;
-        ComapnyIndustry = comapnyIndustry;
-        BussinessMail = bussinessMail;
-        CompanyWebsite = companyWebsite;
-        CompanyAddress = companyAddress;
+        this.CompanyName = companyName;
+        this.CompanyPhone = companyPhone;
+        this.ComapnyIndustry = comapnyIndustry;
+        this.BussinessMail = bussinessMail;
+        this.CompanyWebsite = companyWebsite;
+        this.CompanyAddress = companyAddress;
     }
 
     public String getJobRole() {
@@ -86,4 +91,6 @@ public class Employer extends User {
     public void setCompanyAddress(String CompanyAddress) {
         this.CompanyAddress = CompanyAddress;
     }
+
+
 }

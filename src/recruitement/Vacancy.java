@@ -27,7 +27,7 @@ public class Vacancy {
     private float salary;
     private int openPositions;
     private int emp_id;
-    DBConnection D = new DBConnection();
+    private DBConnection D;
 
     public Vacancy(String title,String type,String about, String requirements, String educationLevel,String languages, float salary, int openPositions , int emp_id){
         this.title = title;
@@ -39,6 +39,7 @@ public class Vacancy {
         this.salary = salary;
         this.openPositions = openPositions;
         this.emp_id = emp_id;
+        this.D = new DBConnection();
 
     }
 

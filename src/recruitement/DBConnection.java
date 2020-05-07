@@ -184,6 +184,24 @@ public class DBConnection {
 
     }
 
+    public String RetrieveCurrentUserName(int currID) {
+        String currName = "";
+        try {
+            String sql = ("SELECT u_name FROM `user` WHERE u_id = '" + currID +"' ");
+            rs = st.executeQuery(sql);
+            if(rs.first()){
+                currName = rs.getString("u_name");
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+
+
+        }
+        return currName;
+
+    }
+
 
 
 }

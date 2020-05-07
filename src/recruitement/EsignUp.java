@@ -29,6 +29,7 @@ public class EsignUp extends javax.swing.JFrame {
         setTitle("Employer SignUp");
         setSize(400,500);
         setLocationRelativeTo(null);
+        D = new DBConnection();
 
 
         signUpButton.addActionListener(new ActionListener() {
@@ -50,11 +51,8 @@ public class EsignUp extends javax.swing.JFrame {
                 String gender = comboBox1.getSelectedItem().toString();
                 Employer emp = new Employer(name, age, phone, address, gender, email, password, type,
                         jobRole, companyName, companyPhone, comapnyIndustry, bussinessMail, companyWebsite, companyAddress);
-                //D.insertEmployer(emp);
-                System.out.print(emp.getName() + emp.getAge() + emp.getPhone() +emp.getAddress() +
-                        emp.getGender() + emp.getEmail() + emp.getPassword() + emp.getType()
-                + emp.getJobRole() + emp.getCompanyName() + emp.getCompanyPhone() + emp.getComapnyIndustry()
-                + emp.getBussinessMail() + emp.getCompanyWebsite() + emp.getCompanyAddress());
+                D.insertEmployer(emp);
+
 
             }
         });

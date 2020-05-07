@@ -25,12 +25,15 @@ public class DBConnection {
             String sql = ("INSERT INTO application (app_id, app_name, app_email, app_qualification, app_brief, app_js_id) " +
                     "VALUES (NULL, '" + applicantName + "', '" + applicantEmail + "', '" + qualifications + "', '" + applicantbrief + "', '" + UserId + "' )");
 
-            st.executeQuery(sql);
-            String sql2 = ("SELECT app_id FROM application WHERE app_name =" + applicantName );
+            st.executeUpdate(sql);
+            String sql2 = ("SELECT app_id FROM application WHERE app_name = '"+ applicantName +"' " );
             rs = st.executeQuery(sql2);
-            int curr_id = rs.getInt("app_id");
+            int curr_id = 0;
+            if(rs.first()){
+                 curr_id = rs.getInt("app_id");
+            }
             String sql3 = ("INSERT INTO  vacancyapp (appID, vacancyID) " + " VALUES('"+curr_id+"', '"+vacancy_id+"' )" );
-            st.executeQuery(sql3);
+            st.executeUpdate(sql3);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -38,7 +41,7 @@ public class DBConnection {
 
     public ResultSet getApplications(int vacancy_ID) {
         try {
-            rs = st.executeQuery("select * from application WHERE app_id IN(select appID from vacancyapp where vacancyID = )" + vacancy_ID  );
+            rs = st.executeQuery("select * from application WHERE app_id IN(select appID from vacancyapp where vacancyID = '"+ vacancy_ID + "' )  "  );
 
         } catch (Exception e) {
             System.err.println("DATABASE QUERY ERROR: " + e.toString());
@@ -50,7 +53,7 @@ public class DBConnection {
         try {
             String sql = ("INSERT INTO vacancy (v_id, v_title, v_type, v_about, v_requirements, v_edu_lvl, v_lang, v_salary, v_open_position, employer_id ) " +
                     "VALUES (NULL, '" + title + "', '" + type + "', '" + about + "', '" + requirements + "', '" + educationLevel + "', '" + languages + "', '" + salary + "', '" + openPositions + "', '" + emp_id + "')");
-            st.executeQuery(sql);
+            st.executeUpdate(sql);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -71,9 +74,11 @@ public class DBConnection {
     public int RetrieveVacancyID(String title) {
         int id = 0;
         try {
-            String sql = ("SELECT v_id FROM `vacancy` WHERE v_title = title");//-----------------------------
+            String sql = ("SELECT v_id FROM `vacancy` WHERE v_title = '" + title +"' ");
             rs = st.executeQuery(sql);
-            id = rs.getInt("v_id");
+            if(rs.first()){
+                id = rs.getInt("v_id");
+            }
 
         } catch (Exception e) {
             System.out.println(e);
@@ -87,7 +92,7 @@ public class DBConnection {
 
     public ResultSet RetrieveEmployerVacancy(int Employer_ID) {
         try {
-            String sql = ("SELECT * FROM `vacancy` WHERE employer_id = Employer_ID");
+            String sql = ("SELECT * FROM `vacancy` WHERE employer_id = '" + Employer_ID +"' ");
             rs = st.executeQuery(sql);
         } catch (Exception e) {
             System.out.println(e);

@@ -1,19 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package recruitement;
 
-import java.util.Date;
+import javax.swing.JOptionPane;
 
-/**
- *
- * @author mazen174825
- */
 public class Admin extends User {
+    private int id;
+    private int adminId;
 
-    public Admin(int id, String name, int age, String phone, String address, String gender, String email, String password, String type) {
-        super( name, age, phone, address, gender, email, password, type);
+    public Admin(String name, int age, String phone, String address, String gender, String email, String password, String type, int adminId) {
+        super(name, age, phone, address, gender, email, password, type);
+        this.adminId = adminId;
     }
+
+    
 }

@@ -12,6 +12,7 @@ public class Login extends javax.swing.JFrame {
     private JPasswordField passwordField1;
     private JButton SignUp;
     private JComboBox comboBox1;
+    public int tempID1;
 
 
     public Login() {
@@ -32,7 +33,7 @@ public class Login extends javax.swing.JFrame {
                 User.setEmail(email);
                 User.setPassword(password);
                 User.setType(type);
-                int tempID1 = 0;
+                tempID1 = 0;
 
 
 
@@ -41,7 +42,7 @@ public class Login extends javax.swing.JFrame {
                 {
                     if(User.getEmail().equals(Users.get(i).getEmail()) && User.getPassword().equals(Users.get(i).getPassword()) && User.getType().equals(Users.get(i).getType()))
                     {
-                        tempID1=Users.get(i).getID();
+                        tempID1= DB.currentUserID(User.getEmail());
                         JOptionPane.showMessageDialog(null,"successful log in "+tempID1);
                     }
 

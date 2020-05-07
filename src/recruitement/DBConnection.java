@@ -13,7 +13,7 @@ public class DBConnection {
     public DBConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3308/recurit_me", "root", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3308/recruit_me", "root", "");
             st = con.createStatement();
         } catch (Exception ex) {
             System.out.println("error: " + ex);
@@ -164,6 +164,24 @@ public class DBConnection {
         } catch (Exception e) {
             System.err.println("DATABASE QUERY ERROR: " + e.toString());
         }
+    }
+
+    public int currentUserID(String email) {
+        int id = 0;
+        try {
+            String sql = ("SELECT u_id FROM `user` WHERE u_email = '" + email +"' ");
+            rs = st.executeQuery(sql);
+            if(rs.first()){
+                id = rs.getInt("u_id");
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+
+
+        }
+        return id;
+
     }
 
 

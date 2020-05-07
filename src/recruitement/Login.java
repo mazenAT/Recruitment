@@ -12,7 +12,7 @@ public class Login extends javax.swing.JFrame {
     private JPasswordField passwordField1;
     private JButton SignUp;
     private JComboBox comboBox1;
-    public int tempID1;
+    private int tempID1;
 
 
     public Login() {
@@ -38,15 +38,28 @@ public class Login extends javax.swing.JFrame {
 
 
                 ArrayList<User> Users = DB.checkUsers();
+                boolean found = false;
                 for (int i = 0; i < Users.size(); i++)
                 {
-                    if(User.getEmail().equals(Users.get(i).getEmail()) && User.getPassword().equals(Users.get(i).getPassword()) && User.getType().equals(Users.get(i).getType()))
+                    if(User.getEmail().equals(Users.get(i).getEmail()) && User.getPassword().equals(Users.get(i).getPassword()) )
                     {
                         tempID1= DB.currentUserID(User.getEmail());
-                        JOptionPane.showMessageDialog(null,"successful log in "+tempID1);
+
+                        if(User.getType().equals("jobseeker")){
+                            JGUI jobseekerWindow = new JGUI(tempID1);
+                            jobseekerWindow.setVisible(true);
+                            dispose();
+                        }
+
+                        found = true;
                     }
 
                 }
+                if(found == false) {
+                    JOptionPane.showMessageDialog(null, "Wrong User Name OR PASSWORD");
+
+                }
+
             }
         });
         SignUp.addActionListener(new ActionListener() {

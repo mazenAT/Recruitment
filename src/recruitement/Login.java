@@ -50,6 +50,11 @@ public class Login extends javax.swing.JFrame {
                             jobseekerWindow.setVisible(true);
                             dispose();
                         }
+                        else if(User.getType().equals("employer")){
+                            EGUI employerWindow = new EGUI(tempID1);
+                            employerWindow.setVisible(true);
+                            dispose();
+                        }
 
                         found = true;
                     }
